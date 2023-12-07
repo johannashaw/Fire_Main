@@ -1,6 +1,6 @@
 #include "FastLED.h"
 
-#define NUM_LEDS  50     // Enter the total number of LEDs on the strip
+#define NUM_LEDS  60     // Enter the total number of LEDs on the strip
 #define PIN       7      // The pin connected to DATA line to control the LEDs
 
 CRGB leds[NUM_LEDS];
@@ -12,5 +12,11 @@ void setup() {
 }
 
 void loop() {
-  Fire(50, 100, 10);
+  static int FlameHeight = 50;    // inverse logic; large num => small flame
+  static int Sparks=100;          // likelihood out of 255 that a spark generates for each strip
+  static int DelayDuration=10;    // delay in ms
+  static int gridWidth = 5;
+
+  // Fire(FlameHeight, Sparks, DelayDuration);
+  FireGrid(FlameHeight, Sparks, DelayDuration, gridWidth);
 }
